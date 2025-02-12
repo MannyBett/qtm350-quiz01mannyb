@@ -1,0 +1,107 @@
+mmb@Surface-M:~$ git clone https://github.com/MannyBett/qtm350-quiz01mannyb.git
+Cloning into 'qtm350-quiz01mannyb'...
+remote: Enumerating objects: 8, done.
+remote: Counting objects: 100% (8/8), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 8 (delta 0), reused 8 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (8/8), done.
+mmb@Surface-M:~$ cd ~/qtm350-quiz01mannyb
+mmb@Surface-M:~/qtm350-quiz01mannyb$ touch commands.txt
+mmb@Surface-M:~/qtm350-quiz01mannyb$ git branch
+* main
+mmb@Surface-M:~/qtm350-quiz01mannyb$ git checkout -b feature-update
+Switched to a new branch 'feature-update'
+mmb@Surface-M:~/qtm350-quiz01mannyb$ mkdir ~/qtm350-quiz01mannyb/reports
+mmb@Surface-M:~/qtm350-quiz01mannyb$ ls
+README.md  commands.txt  data  docs  reports  scripts
+mmb@Surface-M:~/qtm350-quiz01mannyb$ cd ~/qtm350-quiz01mannyb/reports
+mmb@Surface-M:~/qtm350-quiz01mannyb/reports$ touch summary.md
+mmb@Surface-M:~/qtm350-quiz01mannyb/reports$ echo "This document provides a summary of the project updates." >> summary.md
+mmb@Surface-M:~/qtm350-quiz01mannyb/reports$ git add ~/qtm350-quiz01mannyb/reports
+mmb@Surface-M:~/qtm350-quiz01mannyb/reports$ git status
+On branch feature-update
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   summary.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        ../commands.txt
+
+mmb@Surface-M:~/qtm350-quiz01mannyb/reports$ git commit -m "Add reports directory"
+[feature-update c838c89] Add reports directory
+ 1 file changed, 1 insertion(+)
+ create mode 100644 reports/summary.md
+mmb@Surface-M:~/qtm350-quiz01mannyb/reports$ touch file{1..3}.txt
+mmb@Surface-M:~/qtm350-quiz01mannyb/reports$ ls
+file1.txt  file2.txt  file3.txt  summary.md
+mmb@Surface-M:~/qtm350-quiz01mannyb/reports$ cd ~/qtm350-quiz01manny
+b/data
+mmb@Surface-M:~/qtm350-quiz01mannyb/data$ mv ~/qtm350-quiz01mannyb/data/raw-data.csv ~/qtm350-quiz01mannyb/data/input-data.csv
+mmb@Surface-M:~/qtm350-quiz01mannyb/data$ mkdir ~/qtm350-quiz01manny
+b/scripts/backup && cp ~/qtm350-quiz01mannyb/scripts/*.py  ~/qtm350-quiz01mannyb/scripts/backup
+mmb@Surface-M:~/qtm350-quiz01mannyb/data$ cd ~/qtm350-quiz01mannyb/scripts/backup && ls
+01-setup.py  02-data-cleaning.py  03-data-modelling.py
+mmb@Surface-M:~/qtm350-quiz01mannyb/scripts/backup$ cd ~/qtm350-quiz01mannyb/docs
+mmb@Surface-M:~/qtm350-quiz01mannyb/docs$ ls
+documentation.md
+mmb@Surface-M:~/qtm350-quiz01mannyb/docs$ rm -rf documentation.md
+mmb@Surface-M:~/qtm350-quiz01mannyb/docs$ ls
+mmb@Surface-M:~/qtm350-quiz01mannyb/docs$ cd ~/qtm350-quiz01mannyb
+mmb@Surface-M:~/qtm350-quiz01mannyb$ git add .
+mmb@Surface-M:~/qtm350-quiz01mannyb$ git commit -m "Update project files"
+[feature-update ff29726] Update project files
+ 9 files changed, 1 deletion(-)
+ rename data/raw-data.csv => commands.txt (100%)
+ create mode 100644 data/input-data.csv
+ delete mode 100644 docs/documentation.md
+ create mode 100644 reports/file1.txt
+ create mode 100644 reports/file2.txt
+ create mode 100644 reports/file3.txt
+ create mode 100644 scripts/backup/01-setup.py
+ create mode 100644 scripts/backup/02-data-cleaning.py
+ create mode 100644 scripts/backup/03-data-modelling.py
+mmb@Surface-M:~/qtm350-quiz01mannyb$ ls ~/qtm350-quiz01mannyb/data
+input-data.csv
+mmb@Surface-M:~/qtm350-quiz01mannyb$ touch .gitignore
+mmb@Surface-M:~/qtm350-quiz01mannyb$ echo "temp/" >> .gitignore
+mmb@Surface-M:~/qtm350-quiz01mannyb$ echo "dataset0?.csv" >> .gitign
+ore
+mmb@Surface-M:~/qtm350-quiz01mannyb$ cat .gitignore
+temp/
+dataset0?.csv
+mmb@Surface-M:~/qtm350-quiz01mannyb$ git add .gitignore
+mmb@Surface-M:~/qtm350-quiz01mannyb$ git commit -m "Add .gitignore file"
+[feature-update ac7ca41] Add .gitignore file
+ 1 file changed, 2 insertions(+)
+ create mode 100644 .gitignore
+mmb@Surface-M:~/qtm350-quiz01mannyb$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+mmb@Surface-M:~/qtm350-quiz01mannyb$ git merge feature-update
+Updating 4258465..ac7ca41
+Fast-forward
+ .gitignore                          | 2 ++
+ data/raw-data.csv => commands.txt   | 0
+ data/input-data.csv                 | 0
+ docs/documentation.md               | 1 -
+ reports/file1.txt                   | 0
+ reports/file2.txt                   | 0
+ reports/file3.txt                   | 0
+ reports/summary.md                  | 1 +
+ scripts/backup/01-setup.py          | 0
+ scripts/backup/02-data-cleaning.py  | 0
+ scripts/backup/03-data-modelling.py | 0
+ 11 files changed, 3 insertions(+), 1 deletion(-)
+ create mode 100644 .gitignore
+ rename data/raw-data.csv => commands.txt (100%)
+ create mode 100644 data/input-data.csv
+ delete mode 100644 docs/documentation.md
+ create mode 100644 reports/file1.txt
+ create mode 100644 reports/file2.txt
+ create mode 100644 reports/file3.txt
+ create mode 100644 reports/summary.md
+ create mode 100644 scripts/backup/01-setup.py
+ create mode 100644 scripts/backup/02-data-cleaning.py
+ create mode 100644 scripts/backup/03-data-modelling.py
+mmb@Surface-M:~/qtm350-quiz01mannyb$ nano command.txt
